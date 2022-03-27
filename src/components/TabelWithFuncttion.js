@@ -72,19 +72,9 @@ export default class TableWithFunction extends Component {
     }
   }
 
-  //   compareDates = () => {
-  //     return this.people.sort((a, b) => {
-  //       return new Date(a.birth) - new Date(b.birth);
-  //     });
-  //   };
+  compareDates(person1, person2) {}
 
-  //   compareNames = () => {
-  //     return this.people.sort((a, b) => {
-  //       const person1 = a.name.toLowerCase();
-  //       const person2 = b.name.toLowerCase();
-  //       return person1 < person2 ? -1 : person1 > person2 ? 1 : 0;
-  //     });
-  //   };
+  compareNames(person1, person2) {}
 
   render() {
     return (

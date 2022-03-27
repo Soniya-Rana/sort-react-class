@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Radio from "./components/Radio";
-import Tables from "./components/Tables";
+import TableWithFunction from "./components/TabelWithFuncttion";
+// import Tables from "./components/Tables";
 
 export default class App extends Component {
   constructor() {
@@ -29,7 +30,8 @@ export default class App extends Component {
           compaerParameter={this.compaerParameter}
           paramterSelected={this.state.paramterSelected}
         />
-        <Tables paramterSelected={this.state.paramterSelected} />
+        {/* <Tables paramterSelected={this.state.paramterSelected} /> */}
+        <TableWithFunction paramterSelected={this.state.paramterSelected} />
       </div>
     );
   }

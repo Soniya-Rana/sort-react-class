@@ -83,7 +83,7 @@ export default class Table extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.people.map((person) => {
+            {this.state.sortedArray.map((person) => {
               return (
                 <tr key={person.name}>
                   <td>{person.name}</td>
