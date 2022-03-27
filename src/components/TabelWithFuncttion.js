@@ -38,7 +38,8 @@ export default class TableWithFunction extends Component {
       },
     ];
     this.state = {
-      sortedArray: [],
+      sortedByName: [],
+      sortedByBirth: [],
     };
   }
 
@@ -52,29 +53,28 @@ export default class TableWithFunction extends Component {
     const { paramterSelected } = this.props;
     if (prevProp.paramterSelected !== this.props.paramterSelected) {
       if (paramterSelected === "name") {
-        //sort this.people array by name
+        //sort this.people array by calling compareNames
         this.setState({
-          sortedArray: this.people.sort((a, b) => {
-            const person1 = a.name.toLowerCase();
-            const person2 = b.name.toLowerCase();
-            return person1 < person2 ? -1 : person1 > person2 ? 1 : 0;
-          }),
+          sortedArray: this.people.sort(this.compareNames),
         });
       } else if (paramterSelected === "birth") {
-        //sort this.people array by birth
-
+        //sort this.people array by calling compareDates
         this.setState({
-          sortedArray: this.people.sort(function (a, b) {
-            return new Date(a.birth) - new Date(b.birth);
-          }),
+          sortedArray: this.people.sort(this.compareDates),
         });
       }
     }
   }
 
-  compareDates(person1, person2) {}
+  compareDates(person1, person2) {
+    return new Date(person1.birth) - new Date(person2.birth);
+  }
 
-  compareNames(person1, person2) {}
+  compareNames(person1, person2) {
+    const personA = person1.name.toLowerCase();
+    const personB = person2.name.toLowerCase();
+    return personA < personB ? -1 : personA > personB ? 1 : 0;
+  }
 
   render() {
     return (
@@ -95,24 +95,6 @@ export default class TableWithFunction extends Component {
                 </tr>
               );
             })}
-            {/* {parameterSelected === "name" &&
-              this.compareNames().map((person) => {
-                return (
-                  <tr key={person.name}>
-                    <td>{person.name}</td>
-                    <td>{person.birth}</td>
-                  </tr>
-                );
-              })}
-            {parameterSelected === "birth" &&
-              this.compareDates().map((person) => {
-                return (
-                  <tr key={person.name}>
-                    <td>{person.name}</td>
-                    <td>{person.birth}</td>
-                  </tr>
-                );
-              })} */}
           </tbody>
         </table>
       </div>
